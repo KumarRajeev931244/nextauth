@@ -3,7 +3,7 @@ import mongoose, { connection } from "mongoose";
 export async function dbConnection(){
     try {
         await mongoose.connect(process.env.MONGODB_URI!)
-        connection.on('connected', () => {
+        const connection = mongoose.connection.on('connected', () => {
             console.log("mongodb connected successfully");
         })
         connection.on('error' , (err) => {
